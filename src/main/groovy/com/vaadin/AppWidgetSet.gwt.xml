@@ -1,4 +1,3 @@
-
 <module>
 	<!--
 	    This file is automatically updated based on new dependencies by the
@@ -6,8 +5,8 @@
 	-->
 
 	<!-- Inherit DefaultWidgetSet -->
-	<inherits name="com.vaadin.DefaultWidgetSet" /> 
-    
+	<inherits name="com.vaadin.DefaultWidgetSet" />
+
     <!--
      Uncomment the following to compile the widgetset for one browser only.
      This can reduce the GWT compilation time significantly when debugging.
@@ -43,4 +42,5 @@
     -->
     <!-- <set-configuration-property name="devModeRedirectEnabled" value="true" /> -->
 
+    
 </module>

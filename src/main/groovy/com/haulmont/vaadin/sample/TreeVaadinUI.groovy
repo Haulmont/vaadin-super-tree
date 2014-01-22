@@ -16,16 +16,36 @@
 
 package com.haulmont.vaadin.sample
 
+import com.vaadin.event.Action
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.*
 
-public class SampleVaadinUI extends UI {
+public class TreeVaadinUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
         def layout = new VerticalLayout()
-        def button = new Button("Build prototype from scratch")
-        layout.addComponent(button)
+        def tree = new SuperTree(width: "200px", height: "200px", immediate: true)
+        tree.addItem("Root")
+
+        tree.addActionHandler(new Action.Handler() {
+
+            def openAction = new Action("Open")
+
+            @Override
+            Action[] getActions(Object target, Object sender) {
+                def actions = new Action[1]
+                actions[0] = openAction
+                return actions
+            }
+
+            @Override
+            void handleAction(Action action, Object sender, Object target) {
+                new Notification(String.valueOf(tree.getValue())).show(getPage())
+            }
+        })
+        layout.addComponent(tree)
+
         setContent(layout)
     }
 }
