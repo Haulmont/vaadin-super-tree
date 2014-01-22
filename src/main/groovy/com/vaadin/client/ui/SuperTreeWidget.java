@@ -464,6 +464,11 @@ public class SuperTreeWidget extends FocusElementPanel implements VHasDropHandle
         return selectedIds.contains(treeNode.key);
     }
 
+    protected SuperTreeConnector getConnector() {
+        return (SuperTreeConnector) ConnectorMap.get(client)
+                .getConnector(this);
+    }
+
     public class TreeNode extends SimplePanel implements ActionOwner {
 
         public static final String CLASSNAME = "v-tree-node";
@@ -1018,11 +1023,6 @@ public class SuperTreeWidget extends FocusElementPanel implements VHasDropHandle
 
         public boolean isSibling(TreeNode node) {
             return node.getParentNode() == getParentNode();
-        }
-
-        protected SuperTreeConnector getConnector() {
-            return (SuperTreeConnector) ConnectorMap.get(client)
-                    .getConnector(this);
         }
 
         public void showContextMenu(Event event) {
